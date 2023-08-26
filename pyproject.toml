@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "ac01 automação de testes"
+version = "0.1.0"
+description = ""
+authors = ["AkimGomes <ak-gomes@hotmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pytest = "^7.4.0"
+dataclass-type-validator = "^0.1.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
