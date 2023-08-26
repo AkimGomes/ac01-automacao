@@ -1,18 +1,5 @@
-from dataclasses import dataclass
-from typing import Union
-
 import pytest
-from dataclass_type_validator import dataclass_validate
-
-from controllers.calcula_salario import calcular_salario_liquido
-
-
-@dataclass_validate
-@dataclass
-class CasoDeGanhos:
-    valor_hora_aula: Union[int, float]
-    numero_de_aulas: Union[int, float]
-    percentual_inss: Union[int, float]
+from models.calcula_salario import CasoDeGanhos
 
 
 def test_calculo_salario():
@@ -23,7 +10,7 @@ def test_calculo_salario():
     )
     resultado_esperado = 987.00
 
-    assert calcular_salario_liquido(caso_de_ganhos) == resultado_esperado
+    assert caso_de_ganhos.calcular_salario_liquido() == resultado_esperado
 
     caso_de_ganhos = CasoDeGanhos(
         valor_hora_aula=20.5,
@@ -31,7 +18,7 @@ def test_calculo_salario():
         percentual_inss=1.7,
     )
     resultado_esperado = 4836.36
-    assert calcular_salario_liquido(caso_de_ganhos) == resultado_esperado
+    assert caso_de_ganhos.calcular_salario_liquido() == resultado_esperado
 
     caso_de_ganhos = CasoDeGanhos(
         valor_hora_aula=13.9,
@@ -39,7 +26,7 @@ def test_calculo_salario():
         percentual_inss=6.48,
     )
     resultado_esperado = 2599.86
-    assert calcular_salario_liquido(caso_de_ganhos) == resultado_esperado
+    assert caso_de_ganhos.calcular_salario_liquido() == resultado_esperado
 
 
 if __name__ == '__main__':
